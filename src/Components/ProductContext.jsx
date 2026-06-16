@@ -1,4 +1,4 @@
-import React from "react";
+import React, { createContext, useEffect, useState } from "react";
 
 export const ProductContext = createContext();
 
@@ -8,11 +8,16 @@ const ProductProvider = ({ children }) => {
     const fetchProducts = async () => {
       const response = await fetch("https://fakestoreapi.com/products");
       const data = await response.json();
+      // console.log(data);
+      setProduct(data);
     };
+    fetchProducts();
   }, []);
   return (
     <div>
-      <ProductContext.Provider>{children}</ProductContext.Provider>
+      <ProductContext.Provider value={products}>
+        {children}
+      </ProductContext.Provider>
     </div>
   );
 };
