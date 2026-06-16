@@ -4,7 +4,7 @@ import HeroImage from "../assets/images/header_image.png";
 export default function Header() {
   return (
     <section className="min-h-[85vh] bg-[#f8f8f8] flex items-center">
-      <div className="max-w-7xl mx-auto px-6 w-full">
+      <div className="container mx-auto px-6">
         <div className="grid lg:grid-cols-2 items-center gap-10">
           {/* Left Content */}
           <div>
@@ -18,10 +18,8 @@ export default function Header() {
             </h1>
 
             <div className="flex items-center gap-6 mt-12">
-              <button className="bg-black text-white px-5 py-3 text-sm hover:bg-gray-800 transition">
-                Latest
-                <br />
-                Products →
+              <button className="bg-black text-white px-6 py-3 rounded-full inline-flex items-center gap-2 whitespace-nowrap">
+                Latest Products →
               </button>
 
               <p className="text-gray-500 max-w-md text-sm">
