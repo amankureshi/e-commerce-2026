@@ -2,16 +2,26 @@ import { FaStar, FaPlus } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
 const Product = ({ product }) => {
-  const { image, category, title, description, price, rating } = product;
+  const { image, category, title, description, price, rating, id } = product;
 
   return (
     <div className="bg-white flexCenter m-1.5 py-6 ring-1 ring-slate-200/20 shadow-sm rounded-xl border border-gray-200 p-4 relative group hover:shadow-lg transition-all duration-300">
       {/* Rating */}
-      <div className="absolute top-3 left-3 bg-green-50 px-2 py-1 rounded-full flex items-center gap-1">
-        <FaStar className="text-yellow-500 text-xs" />
-        <span className="text-xs font-semibold text-gray-700">
-          {rating?.rate}
-        </span>
+      <div className="absolute top-3 left-0 right-0 px-3 flex justify-between items-center">
+        {id === 1 || id === 2 || id === 3 ? (
+          <span className="text-xs font-bold bg-green-100 px-2 py-1 rounded-full">
+            New
+          </span>
+        ) : (
+          <div />
+        )}
+
+        <div className="bg-green-100 px-2 py-1 rounded-full flex items-center gap-1">
+          <FaStar className="text-yellow-500 text-xs" />
+          <span className="text-xs font-semibold text-gray-700">
+            {rating?.rate}
+          </span>
+        </div>
       </div>
 
       {/* IMAGE WRAPPER WITH BORDER */}
@@ -28,19 +38,23 @@ const Product = ({ product }) => {
         </Link>
       </div>
 
-      {/* Category */}
-      <p className="text-[11px] text-gray-400 capitalize">{category}</p>
+      <div>
+        {/* Category */}
+        <p className="text-[11px] text-gray-400 capitalize">{category}</p>
 
-      {/* Title */}
-      <h3 className="text-sm font-semibold text-gray-800 line-clamp-2 mt-1">
-        {title}
-      </h3>
+        {/* Title */}
+        <h3 className="text-sm font-semibold text-gray-800 line-clamp-2 mt-1">
+          {title}
+        </h3>
 
-      {/* Description */}
-      <p className="text-xs text-gray-400 mt-2 line-clamp-2">{description}</p>
-
+        {/* Description */}
+        <p className="text-xs text-gray-400 mt-2 line-clamp-2">{description}</p>
+      </div>
       {/* Price */}
-      <h4 className="text-red-400 font-bold mt-3">${price}</h4>
+      <div className="flex justify-between items-center gap-4">
+        <h4 className="text-red-400 font-bold">${price}</h4>
+        <h6 className="text-xs">Sales ({rating.count})</h6>
+      </div>
     </div>
   );
 };
