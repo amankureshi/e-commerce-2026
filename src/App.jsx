@@ -12,13 +12,21 @@ function App() {
   const [count, setCount] = useState(0);
 
   return (
-    <div>
-      <BrowserRouter>
-        <Navbar />
-        <Header />
-        <Shop />
-      </BrowserRouter>
-    </div>
+    <>
+      <Navbar />
+      <Routes>
+        <Route
+          path="/"
+          element={
+            <>
+              <Header />
+              <Shop />
+            </>
+          }
+        />
+        <Route path="/product/:id" element={<ProductDetails />} />{" "}
+      </Routes>
+    </>
   );
 }
 
