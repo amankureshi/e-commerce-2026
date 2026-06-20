@@ -6,7 +6,8 @@ import "./App.css";
 import Navbar from "./Components/Navbar";
 import Header from "./Components/Header";
 import Shop from "./Components/Shop";
-import { BrowserRouter } from "react-router-dom";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import ProductDetails from "./Components/ProductDetails";
 
 function App() {
   const [count, setCount] = useState(0);
