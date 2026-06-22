@@ -33,7 +33,10 @@ const Product = ({ product }) => {
         />
 
         {/* PLUS ICON bottom-left inside image border */}
-        <Link className="absolute bottom-0 right-0 w-7 h-7 bg-[#f58a7b] rounded-full flex items-center justify-center text-white hover:scale-110 transition">
+        <Link
+          to={`/product/${id}`}
+          className="absolute bottom-0 right-0 w-7 h-7 bg-[#f58a7b] rounded-full flex items-center justify-center text-white hover:scale-110 transition"
+        >
           <FaPlus size={10} />
         </Link>
       </div>
