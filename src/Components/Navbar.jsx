@@ -1,8 +1,12 @@
 import { useState } from "react";
 import { FiMenu, FiX, FiSearch, FiShoppingCart, FiUser } from "react-icons/fi";
+import { useContext } from "react";
+import { ProductContext } from "../Context/ProductContext";
+import { Link } from "react-router-dom";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
+  const { cartItems } = useContext(ProductContext);
 
   return (
     <>
@@ -58,12 +62,12 @@ export default function Navbar() {
             {/* Right Icons */}
             <div className="hidden md:flex items-center gap-5">
               <FiSearch size={22} className="cursor-pointer" />
-              <div className="relative cursor-pointer">
+              <Link to="/cart" className="relative cursor-pointer">
                 <FiShoppingCart size={22} />
                 <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs h-5 w-5 rounded-full flex items-center justify-center">
-                  2
+                  {cartItems.length}
                 </span>
-              </div>
+              </Link>
               <FiUser size={22} className="cursor-pointer" />
             </div>
 
