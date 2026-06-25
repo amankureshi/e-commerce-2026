@@ -4,6 +4,7 @@ export const ProductContext = createContext();
 
 const ProductProvider = ({ children }) => {
   const [products, setProduct] = useState([]);
+  const [cartItems, setCartItems] = useState([]);
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -14,9 +15,31 @@ const ProductProvider = ({ children }) => {
     };
     fetchProducts();
   }, []);
+
+  // Add to cart
+  const addToCart = (product) => {
+    const exitstingItem = cartItems.find((item) => item.id === product.id);
+    if (exitstingItem) {
+      setCartItems(
+        cartItems.map((item) =>
+          item.id === product.id
+            ? { ...item, quantity: item.quantity + 1 }
+            : item,
+        ),
+      );
+    } else {
+      setCartItems([
+        ...cartItems,
+        {
+          ...product,
+          quantity: 1,
+        },
+      ]);
+    }
+  };
   return (
     <div>
-      <ProductContext.Provider value={products}>
+      <ProductContext.Provider value={{ products, cartItems, addToCart }}>
         {children}
       </ProductContext.Provider>
     </div>
