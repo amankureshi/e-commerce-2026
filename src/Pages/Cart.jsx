@@ -40,7 +40,7 @@ const Cart = () => {
 
               <td>{item.quantity}</td>
 
-              <td>${item.price * item.quantity}</td>
+              <td>${(item.price * item.quantity).toFixed(2)}</td>
 
               <td>❌</td>
             </tr>
