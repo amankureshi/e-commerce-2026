@@ -2,7 +2,8 @@ import { useContext } from "react";
 import { ProductContext } from "../Context/ProductContext";
 
 const Cart = () => {
-  const { cartItems } = useContext(ProductContext);
+  const { cartItems, increaseQuantity, decreaseQuantity, removeItem } =
+    useContext(ProductContext);
 
   return (
     <div className="max-w-6xl mx-auto p-6">
@@ -37,12 +38,30 @@ const Cart = () => {
               </td>
 
               <td>${item.price}</td>
-
+              <button
+                onClick={() => decreaseQuantity(item.id)}
+                className="bg-gray-200 px-2 rounded"
+              >
+                -
+              </button>
               <td>{item.quantity}</td>
+              <button
+                onClick={() => increaseQuantity(item.id)}
+                className="bg-gray-200 px-2 rounded"
+              >
+                +
+              </button>
 
               <td>${(item.price * item.quantity).toFixed(2)}</td>
 
-              <td>❌</td>
+              <td>
+                <button
+                  onClick={() => removeItem(item.id)}
+                  className="text-red-500 hover:text-red-700"
+                >
+                  ❌
+                </button>
+              </td>
             </tr>
           ))}
         </tbody>
