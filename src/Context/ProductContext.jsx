@@ -58,7 +58,16 @@ const ProductProvider = ({ children }) => {
   };
   return (
     <div>
-      <ProductContext.Provider value={{ products, cartItems, addToCart }}>
+      <ProductContext.Provider
+        value={{
+          products,
+          cartItems,
+          addToCart,
+          increaseQuantity,
+          decreaseQuantity,
+          removeItem,
+        }}
+      >
         {children}
       </ProductContext.Provider>
     </div>
