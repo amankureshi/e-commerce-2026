@@ -3,11 +3,19 @@ import { ProductContext } from "../Context/ProductContext";
 
 const Checkout = () => {
   const { cartItems } = useContext(ProductContext);
+  const navigate = useNavigate();
+
+  const [payment, setPayment] = useState("code");
 
   const totalPrice = cartItems.reduce(
     (total, item) => total + item.price * item.quantity,
     0,
   );
+
+  const handlePlaceOrder = () => {
+    alert("Order placed succesfullu");
+    navigate("/success");
+  };
 
   return (
     <div className="max-w-7xl mx-auto px-6 py-10">
