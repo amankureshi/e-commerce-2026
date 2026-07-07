@@ -67,6 +67,14 @@ const Checkout = () => {
           </form>
         </div>
 
+        {/* <-------- Payment -------->*/}
+
+        <h2 className="text-xl font-semibold mt-8 mb-3">Payment Method</h2>
+        <label className="flex gap-2 mb-2">
+          <input type="radio" />
+          Cash On Delivery
+        </label>
+
         {/* Order Summary */}
         <div className="bg-white shadow rounded-xl p-6">
           <h2 className="text-2xl font-semibold mb-6">Order Summary</h2>
