@@ -71,7 +71,10 @@ const Checkout = () => {
 
         <h2 className="text-xl font-semibold mt-8 mb-3">Payment Method</h2>
         <label className="flex gap-2 mb-2">
-          <input type="radio" />
+          <input type="radio"
+          checked={payment === "cod"}
+          onChange={() => setPayment("cod")} 
+          />
           Cash On Delivery
         </label>
 
