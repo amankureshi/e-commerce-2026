@@ -82,6 +82,9 @@ const Checkout = () => {
           <input type="radio" />
           Credit / Debit Card
         </label>
+        <div className="bg-white shadow rounded-xl p-6">
+          <h2 className="text-2xl font-semibold mb-5">Order Summary</h2>
+        </div>
 
         {/* Order Summary */}
         <div className="bg-white shadow rounded-xl p-6">
