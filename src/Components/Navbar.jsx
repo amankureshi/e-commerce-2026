@@ -132,7 +132,7 @@ const Navbar = () => {
             </svg>
 
             {/* Cart Count */}
-            <span className="absolute right-0 top-0 flex h-4 min-w-4 items-center justify-center rounded-full bg-blue-600 px-1 text-[9px] font-bold text-white">
+            <span className="absolute right-0 top-0 flex h-4 min-w-4 items-center justify-center rounded-full bg-[#f3dfda] px-1 text-[9px] font-bold text-black">
               2
             </span>
           </Link>
@@ -235,7 +235,7 @@ const Navbar = () => {
               className="flex items-center justify-center gap-2 rounded-xl border border-slate-200 py-3 text-sm font-medium text-slate-700 transition hover:bg-slate-50"
             >
               Cart
-              <span className="rounded-full bg-blue-600 px-1.5 py-0.5 text-[10px] font-bold text-white">
+              <span className="rounded-full bg-pink-300 px-1.5 py-0.5 text-[10px] font-bold text-white">
                 2
               </span>
             </Link>
