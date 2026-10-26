@@ -17,7 +17,9 @@ const ProductDetails = () => {
       </div>
     );
   }
-
+  const handleAdd = () => {
+    addToCart(product);
+  };
   const handleBuyNow = () => {
     addToCart(product);
     navigate("/checkout");
@@ -62,7 +64,8 @@ const ProductDetails = () => {
 
           <div className="flex gap-4 mt-8">
             <button
-              onClick={() => addToCart(product)}
+              // onClick={() => addToCart(product)}
+              onClick={handleAdd}
               className="bg-[#f58a7b] text-white px-6 py-3 rounded-lg hover:bg-[#ee7563] transition"
             >
               Add To Cart

@@ -8,13 +8,33 @@ const ProductProvider = ({ children }) => {
 
   useEffect(() => {
     const fetchProducts = async () => {
-      const response = await fetch("https://fakestoreapi.com/products");
-      const data = await response.json();
-      // console.log(data);
-      setProduct(data);
+      try {
+        const response = await fetch(
+          "https://fakestoreapi.com/products"
+        );
+
+        if (!response.ok) {
+          throw new Error(`HTTP error: ${response.status}`);
+        }
+
+        const data = await response.json();
+
+        const formattedProducts = data
+          .filter((product) => product.category !== "groceries")
+          .map((product) => ({
+            ...product,
+            image: product.image,
+          }));
+
+        setProduct(formattedProducts);
+      } catch (error) {
+        console.error("Failed to fetch products:", error);
+      }
     };
+
     fetchProducts();
   }, []);
+
 
   // Add to cart
   const addToCart = (product) => {

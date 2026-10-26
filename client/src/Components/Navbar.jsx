@@ -1,8 +1,10 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
+import { ProductContext } from "../Context/ProductContext";
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
+  const { cartItems } = useContext(ProductContext);
 
   const navLinks = [
     { name: "Home", path: "/" },
@@ -21,13 +23,13 @@ const Navbar = () => {
           onClick={() => setMenuOpen(false)}
           className="group flex items-center gap-2"
         >
-          <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-slate-900 text-lg font-black text-white shadow-lg shadow-slate-900/20 transition-all duration-300 group-hover:rotate-[-5deg] group-hover:bg-blue-700">
+          <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-slate-900 text-lg font-black text-white shadow-lg shadow-slate-900/20 transition-all duration-300 group-hover:rotate-[-5deg] group-hover:bg-pink-700">
             A
           </div>
 
           <div className="leading-none">
             <span className="block text-lg font-extrabold tracking-tight text-slate-900">
-              AUREX
+              Armanee
             </span>
 
             <span className="text-[9px] font-medium uppercase tracking-[0.25em] text-slate-400">
@@ -54,7 +56,7 @@ const Navbar = () => {
                   {link.name}
 
                   <span
-                    className={`absolute bottom-0 left-0 h-0.5 rounded-full bg-blue-600 transition-all duration-300 ${isActive ? "w-full" : "w-0"
+                    className={`absolute bottom-0 left-0 h-0.5 rounded-full bg-pink-600 transition-all duration-300 ${isActive ? "w-full" : "w-0"
                       }`}
                   />
                 </>
@@ -132,15 +134,18 @@ const Navbar = () => {
             </svg>
 
             {/* Cart Count */}
-            <span className="absolute right-0 top-0 flex h-4 min-w-4 items-center justify-center rounded-full bg-[#f3dfda] px-1 text-[9px] font-bold text-black">
-              2
-            </span>
+            {cartItems.length > 0 && (
+              <span className="absolute right-0 top-0 flex h-4 min-w-4 items-center justify-center rounded-full bg-[#f3dfda] px-1 text-[9px] font-bold text-black">
+                {cartItems.reduce((total, item) => total + item.quantity, 0)}
+              </span>
+            )}
+
           </Link>
 
           {/* Shop Button */}
           <Link
             to="/products"
-            className="ml-2 rounded-xl bg-slate-900 px-5 py-2.5 text-sm font-semibold text-white shadow-md shadow-slate-900/10 transition-all duration-300 hover:-translate-y-0.5 hover:bg-blue-700 hover:shadow-lg"
+            className="ml-2 rounded-xl bg-slate-900 px-5 py-2.5 text-sm font-semibold text-white shadow-md shadow-slate-900/10 transition-all duration-300 hover:-translate-y-0.5 hover:bg-pink-700 hover:shadow-lg"
           >
             Shop Now
           </Link>
@@ -200,7 +205,7 @@ const Navbar = () => {
                 onClick={() => setMenuOpen(false)}
                 className={({ isActive }) =>
                   `border-b border-slate-100 py-3.5 text-sm font-medium ${isActive
-                    ? "text-blue-600"
+                    ? "text-pink-600"
                     : "text-slate-600 hover:text-slate-900"
                   }`
                 }
